@@ -1,8 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mysql = require('mysql2')
 
 const post = require('./router/post')
-// const Post = require('./config/sequelize')
 
 const app = express()
 

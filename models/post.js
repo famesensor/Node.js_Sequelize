@@ -5,6 +5,15 @@ module.exports = (sequelize, type) => {
             primaryKey: true,
             autoIncrement: true
         },
-        text: type.STRING
+        text: {
+            type: type.STRING,
+            required: true,
+            allowNull: false
+        },
+        owner: {
+            type: type.STRING,
+            required: true,
+            allowNull: false
+        }
     })
 }
