@@ -65,13 +65,22 @@ router.delete('/del/:id', (req, res) => {
 })
 
 // Update post by id
+// router.post('/update/:id', (req, res) => {
+//     Post.findOne({where: {id: req.params.id}})
+//         .then((post) => {
+//             return post.updateAttributes(req.body)
+//         })
+//         // .then((result) => {
+//         //     res.json(result)
+//         // })
+//         // .catch((err) => {
+//         //     console.log(err)
+//         // })
+// })
 router.post('/update/:id', (req, res) => {
-    Post.findOne({where: {id: req.params.id}})
+    Post.update(req.body ,{where: {id: req.params.id}})
         .then((post) => {
-            return post.updateAttributes(req.body)
-        })
-        .then((result) => {
-            res.json(result)
+            res.json(post)
         })
 })
 
