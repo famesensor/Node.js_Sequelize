@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql2')
 
-const post = require('./router/post')
+const api = require('./router/api')
 
 const app = express()
 
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/api/post', post);
+app.use('/api', api);
 
 // set port, listen for requests
 app.listen(port, () => {
