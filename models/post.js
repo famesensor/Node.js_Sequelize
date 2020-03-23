@@ -1,17 +1,17 @@
 module.exports = (sequelize, type) => {
     return sequelize.define('post', {
         id: {
-            type: type.INTEGER,
+            type: type.UUID,
             primaryKey: true,
-            autoIncrement: true
+            defaultValue: type.UUIDV4,
         },
         text: {
             type: type.STRING,
             required: true,
             allowNull: false
         },
-        owner: {
-            type: type.STRING,
+        userId: {
+            type: type.UUID,
             required: true,
             allowNull: false
         }
