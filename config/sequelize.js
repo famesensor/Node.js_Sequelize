@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize')
 
 const PostModel = require('../models/post')
+const UserModel = require('../models/users')
 
-const {DATABASE_NAME,USERNAME,PASSWORD,HOST,DIALECT} = require('./constants')
+const { DATABASE_NAME,USERNAME,PASSWORD,HOST,DIALECT } = require('./constants')
 
 const sequelize = new Sequelize(DATABASE_NAME, USERNAME, PASSWORD, {
     host: HOST,
@@ -16,10 +17,17 @@ const sequelize = new Sequelize(DATABASE_NAME, USERNAME, PASSWORD, {
 })
 
 const Post = PostModel(sequelize, Sequelize)
+const User = UserModel(sequelize, Sequelize)
+
+// User has Many to Post 
+User.hasMany(Post)
 
 sequelize.sync({ force: false })
     .then(() => {
         console.log(`Database & tables created here!`)
     })
 
-module.exports = Post
+module.exports = {
+    Post,
+    User
+}
